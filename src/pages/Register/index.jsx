@@ -4,7 +4,7 @@ import * as S from './styled'
 
 const Register = () => {
   return (
-    <Layout headerInfo={{ title: 'Register', grid: 1 }}>
+    <Layout headerInfo={{ title: 'Register', grid: 1, showUser: false }}>
       <S.Register>
         <S.LogoContainer>
           <img src="assets/logo.jpg" alt="" />

@@ -23,6 +23,7 @@ export const LanguagePickerItem = styled.div`
   border: 1px solid rgba(112, 112, 112, 0.22);
   font-size: 14px;
   transition: all 0.4s ease;
+  cursor: pointer;
 
   &.selected {
     background: #000;

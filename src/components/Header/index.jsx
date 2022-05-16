@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrowLeft.svg'
 
-const Header = ({ title, user, path, grid, showUser = true, showLogo = true }) => {
+const Header = ({ title, user, path, grid, showUser, showLogo = true }) => {
   return (
     <S.Header grid={grid}>
       {path && (
@@ -19,7 +19,7 @@ const Header = ({ title, user, path, grid, showUser = true, showLogo = true }) =
         </S.LogoContainer>
       )}
       {title && <S.HeaderTitle>{title}</S.HeaderTitle>}
-      {user && showUser && <S.UserIcon to="/info">{user.name[0] || user.email[0]}</S.UserIcon>}
+      {user && showUser && <S.UserIcon to="/info">{user.name?.[0] || user.email?.[0]}</S.UserIcon>}
     </S.Header>
   )
 }

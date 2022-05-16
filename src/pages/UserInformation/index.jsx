@@ -28,12 +28,12 @@ const UserInformation = () => {
         selected: el === pick
       }
     })
-
+    console.log(pick.code)
     i18n.changeLanguage(pick.code)
 
     setLanguages(newArr)
   }
-
+  console.log(i18n.language)
   return (
     <Layout headerInfo={{ grid: 1, showUser: false, showLogo: false, path: '/home' }}>
       <S.UserName>
@@ -44,7 +44,7 @@ const UserInformation = () => {
         {languages.map((el) => (
           <S.LanguagePickerItem
             key={el.code}
-            className={el.selected && 'selected'}
+            className={(el.selected || i18n.language === el.code) && 'selected'}
             onClick={() => handlePickLanguage(el)}
           >
             {el.title}

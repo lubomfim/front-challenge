@@ -23,7 +23,7 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route
-          path="login"
+          path=""
           element={
             <PublicRoute user={isLogin()}>
               <Login />
@@ -55,7 +55,7 @@ function Routes() {
           }
         />
 
-        {/*  <Route path="*" element={<Login />} /> */}
+        <Route path="*" element={<Login />} />
       </Switch>
     </BrowserRouter>
   )

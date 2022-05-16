@@ -140,7 +140,7 @@ const UserLoginAndRegister = ({ type }) => {
                 <Button variant="primary" onClick={handleRegister}>
                   Cadastrar
                 </Button>
-                <Button variant="secondary" path="/login">
+                <Button variant="secondary" path="/">
                   Voltar
                 </Button>
               </>
@@ -151,7 +151,7 @@ const UserLoginAndRegister = ({ type }) => {
       {loginInfo.id && (
         <>
           <S.SuccessRegister>Cadastro criado com sucesso!</S.SuccessRegister>
-          <Button variant="secondary" path="/login">
+          <Button variant="secondary" path="/">
             Fazer login
           </Button>
         </>
