@@ -13,7 +13,7 @@ const Root = createGlobalStyle`
     box-sizing: border-box;
     min-height: 100%;
     font-family: 'Inter', sans-serif;
-    background-color: #E5E5E5
+    background-color: #fff;
   }
 
   input, textarea, label, button, ::placeholder {
