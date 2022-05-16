@@ -28,12 +28,12 @@ const UserInformation = () => {
         selected: el === pick
       }
     })
-    console.log(pick.code)
+
     i18n.changeLanguage(pick.code)
 
     setLanguages(newArr)
   }
-  console.log(i18n.language)
+
   return (
     <Layout headerInfo={{ grid: 1, showUser: false, showLogo: false, path: '/home' }}>
       <S.UserName>

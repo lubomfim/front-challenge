@@ -19,7 +19,7 @@ i18n
     }
   })
 
-if (!i18n.language) {
+if (!i18n.language || i18n.language !== 'pt' || i18n.language !== 'en') {
   i18n.changeLanguage('pt')
 }
 
