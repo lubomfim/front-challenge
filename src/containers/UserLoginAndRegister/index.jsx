@@ -1,0 +1,156 @@
+import * as S from './styled'
+import { useState } from 'react'
+
+import Input from '../../components/Input'
+import Button from '../../components/Button'
+import Loader from '../../components/Loader'
+
+import {
+  loadFromLocalstorage,
+  saveToLocalStorage,
+  saveToLocalStorageSpread
+} from '../../utils/handleStorage'
+
+const UserLogin = ({ type }) => {
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: '',
+    name: '',
+    id: ''
+  })
+  const [error, setError] = useState({
+    email: false,
+    password: false
+  })
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = ({ name, value }) => {
+    setLoginInfo({
+      ...loginInfo,
+      [name]: value
+    })
+  }
+
+  const handleLogin = async () => {
+    setLoading(true)
+    setError({
+      email: false,
+      password: false
+    })
+    try {
+      const getUsers = loadFromLocalstorage('@Luxclusif/Registers') || []
+      const validateCondition = getUsers.filter((el) => el.email === loginInfo.email)
+      const body = { ...loginInfo }
+
+      setTimeout(() => {
+        setLoading(false)
+        setError({
+          email: validateCondition.length === 0,
+          password: validateCondition[0]?.password !== body.password || body.password.length <= 5
+        })
+
+        if (!error.email && !error.password) {
+          delete body.password
+          saveToLocalStorage('@Luxclusif/LoggedUser', body)
+        }
+      }, 1000)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleRegister = async () => {
+    setLoading(true)
+    setError({
+      email: false,
+      password: false
+    })
+    try {
+      setTimeout(() => {
+        const getUsers = loadFromLocalstorage('@Luxclusif/Registers') || []
+
+        if (handleValidateForm(loginInfo.email, getUsers)) {
+          saveToLocalStorageSpread('@Luxclusif/Registers', {
+            ...loginInfo,
+            id: getUsers.length + 1
+          })
+          setLoginInfo({
+            ...loginInfo,
+            id: getUsers.length + 1
+          })
+        }
+        setLoading(false)
+      }, 1000)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleValidateForm = (email, array) => {
+    const regex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const validateCondition =
+      regex.test(email) && array.filter((el) => el.email === email).length <= 0
+
+    setError({
+      password: loginInfo.password.length <= 5,
+      email: !validateCondition
+    })
+
+    if (validateCondition && !(loginInfo.password.length <= 5)) {
+      return true
+    }
+
+    return false
+  }
+
+  return (
+    <S.UserLogin>
+      {!loginInfo.id && (
+        <>
+          {type === 'register' && <Input label="Nome" name="name" onChange={handleChange} />}
+          <Input label="E-mail" name="email" onChange={handleChange} error={error.email} />
+          <Input
+            label="Senha"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            error={error.password}
+          />
+          {!loading &&
+            (type === 'login' ? (
+              <>
+                <Button variant="primary" onClick={handleLogin}>
+                  Entrar
+                </Button>
+                <Button variant="secondary" path="/register">
+                  Cadastrar-se
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="primary" onClick={handleRegister}>
+                  Cadastrar
+                </Button>
+                <Button variant="secondary" path="/login">
+                  Voltar
+                </Button>
+              </>
+            ))}
+        </>
+      )}
+
+      {loginInfo.id && (
+        <>
+          <S.SuccessRegister>Cadastro criado com sucesso!</S.SuccessRegister>
+          <Button variant="secondary" path="/login">
+            Fazer login
+          </Button>
+        </>
+      )}
+      {loading && <Loader />}
+    </S.UserLogin>
+  )
+}
+
+export default UserLogin

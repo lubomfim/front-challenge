@@ -1,16 +1,13 @@
-import { useUserContext } from '../contexts/UserContext'
 import React from 'react'
-import { Route, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import Login from '../pages/Login'
 
-const PublicRoute = ({ component: Component, ...rest }) => {
-  const { isLogin } = useUserContext()
+const PublicRoute = ({ user, children }) => {
+  if (user) {
+    return <Navigate to="/home" replace />
+  }
 
-  return (
-    <Route
-      {...rest}
-      render={(props) => (isLogin() ? <Navigate to={`/home`} /> : <Component {...props} />)}
-    />
-  )
+  return children ? children : <Login />
 }
 
 export default PublicRoute

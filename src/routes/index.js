@@ -1,22 +1,45 @@
 import React from 'react'
-import { BrowserRouter, Routes as Switch } from 'react-router-dom'
+import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 
 import PublicRoute from './PublicRoute'
-import PrivateRoute from './PrivateRoute'
-import { UserProvider } from '../contexts/UserContext'
+import ProtectedRoute from './ProtectedRoute'
+import { useUserContext } from '../contexts/UserContext'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 function Routes() {
+  const { isLogin } = useUserContext()
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Switch>
-          {/*           <PrivateRoute path="/:lang/:path/:id" component={App} />
-          <PrivateRoute path="/:lang/:path" component={App} />
-          <PublicRoute path="/:lang?" component={Login} exact />
-          <PublicRoute path="*" component={Page404} exact /> */}
-        </Switch>
-      </BrowserRouter>
-    </UserProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route
+          path="login"
+          element={
+            <PublicRoute user={isLogin()}>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute user={isLogin()}>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="home"
+          element={
+            <ProtectedRoute user={isLogin()}>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<Login />} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 

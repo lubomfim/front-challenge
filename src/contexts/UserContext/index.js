@@ -1,13 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { loadFromLocalstorage } from '../../utils/handleStorage'
 
 export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(null)
 
   const isLogin = () => {
-    return localStorage.getItem('Identity') || false
+    const getUser = loadFromLocalstorage('@Luxclusif/LoggedUser')
+
+    return getUser?.email || false
   }
 
   useEffect(() => {}, [])
