@@ -59,9 +59,7 @@ const UserLoginAndRegister = ({ type }) => {
           delete body.password
           saveToLocalStorage('@Luxclusif/LoggedUser', body)
           setUser(body)
-
           navigate('/home', { replace: true })
-          console.log('oi')
         }
       }, 1000)
     } catch (err) {

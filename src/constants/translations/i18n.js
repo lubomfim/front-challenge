@@ -19,7 +19,9 @@ i18n
     }
   })
 
-i18n.changeLanguage('en')
+if (!i18n.language) {
+  i18n.changeLanguage('pt')
+}
 
 export const handleChangeLanguage = (lang) => {
   i18n.changeLanguage(lang)

@@ -13,7 +13,10 @@ export const UserProvider = ({ children }) => {
     return user?.email || getUser?.email || false
   }
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    const getUser = loadFromLocalstorage('@Luxclusif/LoggedUser')
+    setUser(getUser)
+  }, [])
 
   const store = {
     user,
