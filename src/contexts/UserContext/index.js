@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
   const isLogin = () => {
     const getUser = loadFromLocalstorage('@Luxclusif/LoggedUser')
 
-    return getUser?.email || false
+    return user?.email || getUser?.email || false
   }
 
   useEffect(() => {}, [])

@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute'
 import { useUserContext } from '../contexts/UserContext'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Home from '../pages/Home'
 
 function Routes() {
   const { isLogin } = useUserContext()
@@ -32,7 +33,7 @@ function Routes() {
           path="home"
           element={
             <ProtectedRoute user={isLogin()}>
-              <Login />
+              <Home />
             </ProtectedRoute>
           }
         />

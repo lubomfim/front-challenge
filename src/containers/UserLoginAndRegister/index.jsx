@@ -1,5 +1,6 @@
 import * as S from './styled'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -10,8 +11,9 @@ import {
   saveToLocalStorage,
   saveToLocalStorageSpread
 } from '../../utils/handleStorage'
+import { useUserContext } from '../../contexts/UserContext'
 
-const UserLogin = ({ type }) => {
+const UserLoginAndRegister = ({ type }) => {
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
@@ -23,6 +25,8 @@ const UserLogin = ({ type }) => {
     password: false
   })
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const { setUser } = useUserContext()
 
   const handleChange = ({ name, value }) => {
     setLoginInfo({
@@ -40,18 +44,24 @@ const UserLogin = ({ type }) => {
     try {
       const getUsers = loadFromLocalstorage('@Luxclusif/Registers') || []
       const validateCondition = getUsers.filter((el) => el.email === loginInfo.email)
-      const body = { ...loginInfo }
+      const body = validateCondition[0]
 
       setTimeout(() => {
         setLoading(false)
         setError({
           email: validateCondition.length === 0,
-          password: validateCondition[0]?.password !== body.password || body.password.length <= 5
+          password: loginInfo.password !== body?.password || loginInfo.password.length <= 5
         })
 
-        if (!error.email && !error.password) {
+        if (validateCondition.length === 0) return
+
+        if (loginInfo.password === body?.password && loginInfo.password.length > 5) {
           delete body.password
           saveToLocalStorage('@Luxclusif/LoggedUser', body)
+          setUser(body)
+
+          navigate('/home', { replace: true })
+          console.log('oi')
         }
       }, 1000)
     } catch (err) {
@@ -105,7 +115,7 @@ const UserLogin = ({ type }) => {
   }
 
   return (
-    <S.UserLogin>
+    <S.UserLoginAndRegister>
       {!loginInfo.id && (
         <>
           {type === 'register' && <Input label="Nome" name="name" onChange={handleChange} />}
@@ -149,8 +159,8 @@ const UserLogin = ({ type }) => {
         </>
       )}
       {loading && <Loader />}
-    </S.UserLogin>
+    </S.UserLoginAndRegister>
   )
 }
 
-export default UserLogin
+export default UserLoginAndRegister

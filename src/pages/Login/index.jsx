@@ -1,5 +1,5 @@
 import Layout from '../../containers/Layout'
-import UserLogin from '../../containers/UserLoginAndRegister'
+import UserLoginAndRegister from '../../containers/UserLoginAndRegister'
 import * as S from './styled'
 
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
         <S.LogoContainer>
           <img src="assets/logo.jpg" alt="" />
         </S.LogoContainer>
-        <UserLogin type="login" />
+        <UserLoginAndRegister type="login" />
       </S.Login>
     </Layout>
   )
