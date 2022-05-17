@@ -5,6 +5,7 @@ import { ReactComponent as ArrowLeft } from '../../assets/icons/arrowLeft.svg'
 
 const Header = ({ title, user, path, grid, showUser, showLogo = true }) => {
   const location = useLocation()
+
   return (
     <S.Header grid={grid}>
       {path && (
@@ -21,7 +22,7 @@ const Header = ({ title, user, path, grid, showUser, showLogo = true }) => {
       )}
       {title && <S.HeaderTitle>{title}</S.HeaderTitle>}
       {user && showUser && (
-        <S.UserIcon to={{ pathname: '/info', state: { prevPath: location.pathname } }}>
+        <S.UserIcon to="/info" state={{ prevPath: location.pathname }}>
           {user.name?.[0] || user.email?.[0]}
         </S.UserIcon>
       )}

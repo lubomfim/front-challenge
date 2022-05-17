@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import Layout from '../../containers/Layout'
+import Layout from '../../components/Layout'
 import ProductsList from '../../containers/ProductsList'
 
 import * as S from './styled'

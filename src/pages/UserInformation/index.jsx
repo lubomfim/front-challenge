@@ -1,15 +1,17 @@
 import Button from '../../components/Button'
-import Layout from '../../containers/Layout'
+import Layout from '../../components/Layout'
 import { useUserContext } from '../../contexts/UserContext'
 import { truncate } from '../../utils/handleString'
 import { useTranslation } from 'react-i18next'
 
 import * as S from './styled'
 import LanguagePicker from '../../containers/LanguagePicker'
+import { useLocation } from 'react-router-dom'
 
 const UserInformation = () => {
   const { i18n, t } = useTranslation()
   const { user, setUser } = useUserContext()
+  const { state } = useLocation()
 
   const handleLogout = () => {
     localStorage.removeItem('@Luxclusif/LoggedUser')
@@ -17,7 +19,9 @@ const UserInformation = () => {
   }
 
   return (
-    <Layout headerInfo={{ grid: 1, showUser: false, showLogo: false, path: '/home' }}>
+    <Layout
+      headerInfo={{ grid: 1, showUser: false, showLogo: false, path: state?.prevPath || '/home' }}
+    >
       <S.UserName>
         {t('hello')}, {truncate(user?.name || user?.email, 10)}!
       </S.UserName>

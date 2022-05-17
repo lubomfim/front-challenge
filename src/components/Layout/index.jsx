@@ -1,4 +1,4 @@
-import Header from '../../components/Header'
+import Header from '../Header'
 import * as S from './styled'
 import { useUserContext } from '../../contexts/UserContext'
 

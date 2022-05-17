@@ -1,4 +1,4 @@
-import Layout from '../../containers/Layout'
+import Layout from '../../components/Layout'
 import UserLoginAndRegister from '../../containers/UserLoginAndRegister'
 import * as S from './styled'
 

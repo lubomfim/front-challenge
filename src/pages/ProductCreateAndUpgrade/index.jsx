@@ -1,16 +1,21 @@
-import Layout from '../../containers/Layout'
+import { useTranslation } from 'react-i18next'
+import Layout from '../../components/Layout'
 import * as S from './styled'
 
 const ProductCreateAndUpgrade = ({ type }) => {
+  const { i18n, t } = useTranslation()
   return (
     <Layout
       headerInfo={{
-        grid: 2,
+        grid: 3,
         showUser: true,
         showLogo: false,
-        path: `home`
+        path: `/home`,
+        title: 'add'
       }}
-    ></Layout>
+    >
+      <S.ProductCreateAndUpgrade></S.ProductCreateAndUpgrade>
+    </Layout>
   )
 }
 
