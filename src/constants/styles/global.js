@@ -33,5 +33,12 @@ const Root = createGlobalStyle`
     height: auto;
   }
 
+
+    input, textarea {
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
 `
 export default Root
