@@ -104,9 +104,9 @@ const ProductForm = ({ t, i18n }) => {
             ...product,
             id: getProducts.length + 1
           })
+          navigate('/home')
         }
         setLoading(false)
-        navigate('/home')
       }, 1000)
     } catch (err) {
       console.log(err)
