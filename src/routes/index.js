@@ -10,6 +10,7 @@ import Home from '../pages/Home'
 import UserInformation from '../pages/UserInformation'
 import { handleChangeLanguage } from '../constants/translations/i18n'
 import { useTranslation } from 'react-i18next'
+import ProductCreateAndUpgrade from '../pages/ProductCreateAndUpgrade'
 
 function Routes() {
   const { isLogin } = useUserContext()
@@ -54,8 +55,24 @@ function Routes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="create-product"
+          element={
+            <ProtectedRoute user={isLogin()}>
+              <ProductCreateAndUpgrade type="create-product" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="upgrade-product/:id"
+          element={
+            <ProtectedRoute user={isLogin()}>
+              <ProductCreateAndUpgrade type="upgrade-product" />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="*" element={<Login />} />
+        <Route path="*" element={<Home />} />
       </Switch>
     </BrowserRouter>
   )

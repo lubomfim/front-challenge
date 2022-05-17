@@ -1,9 +1,10 @@
 import * as S from './styled'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrowLeft.svg'
 
 const Header = ({ title, user, path, grid, showUser, showLogo = true }) => {
+  const location = useLocation()
   return (
     <S.Header grid={grid}>
       {path && (
@@ -19,7 +20,11 @@ const Header = ({ title, user, path, grid, showUser, showLogo = true }) => {
         </S.LogoContainer>
       )}
       {title && <S.HeaderTitle>{title}</S.HeaderTitle>}
-      {user && showUser && <S.UserIcon to="/info">{user.name?.[0] || user.email?.[0]}</S.UserIcon>}
+      {user && showUser && (
+        <S.UserIcon to={{ pathname: '/info', state: { prevPath: location.pathname } }}>
+          {user.name?.[0] || user.email?.[0]}
+        </S.UserIcon>
+      )}
     </S.Header>
   )
 }
