@@ -22,13 +22,15 @@ const UserInformation = ({ t }) => {
     <Layout
       headerInfo={{ grid: 1, showUser: false, showLogo: false, path: state?.prevPath || '/home' }}
     >
-      <S.UserName>
-        {t('info.hello')}, {truncate(user?.name || user?.email, 10)}!
-      </S.UserName>
-      <LanguagePicker i18n={i18n} t={t} />
-      <Button variant="primary" onClick={handleLogout}>
-        {t('info.logout')}
-      </Button>
+      <S.UserInformation>
+        <S.UserName>
+          {t('info.hello')}, {truncate(user?.name || user?.email, 10)}!
+        </S.UserName>
+        <LanguagePicker i18n={i18n} t={t} />
+        <Button variant="primary" onClick={handleLogout}>
+          {t('info.logout')}
+        </Button>
+      </S.UserInformation>
     </Layout>
   )
 }

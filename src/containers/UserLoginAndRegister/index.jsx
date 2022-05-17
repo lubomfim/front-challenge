@@ -117,7 +117,12 @@ const UserLoginAndRegister = ({ type, t }) => {
       {!loginInfo.id && (
         <>
           {type === 'register' && (
-            <Input label={t('register.nameLabel')} name="name" onChange={handleChange} />
+            <Input
+              label={t('register.nameLabel')}
+              name="name"
+              onChange={handleChange}
+              value={loginInfo.name}
+            />
           )}
           <Input
             label={t('login.emailLabel')}
@@ -125,12 +130,14 @@ const UserLoginAndRegister = ({ type, t }) => {
             onChange={handleChange}
             error={error.email}
             type="email"
+            value={loginInfo.value}
           />
           <Input
             label={t('login.passwordLabel')}
             type="password"
             name="password"
             onChange={handleChange}
+            value={loginInfo.password}
             error={error.password}
           />
           {!loading &&

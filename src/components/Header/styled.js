@@ -15,6 +15,7 @@ export const Header = styled.header`
 export const HeaderTitle = styled.p`
   font: normal normal 600 12px Inter;
   text-align: center;
+  white-space: nowrap;
 `
 
 export const LogoContainer = styled.div`

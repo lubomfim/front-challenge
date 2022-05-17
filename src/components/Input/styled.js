@@ -1,12 +1,19 @@
 import styled from 'styled-components'
 
 export const InputContainer = styled.div`
-  max-width: 354px;
   margin: 0 auto;
   position: relative;
+  max-width: 354px;
+
+  textarea {
+    height: 170px;
+    resize: none;
+    padding: 10px;
+    width: 100%;
+  }
 `
 
-export const Input = styled.input`
+export const Input = styled(({ as }) => as)`
   display: block;
   width: 100%;
   border: 1px solid rgba(112, 112, 112, 0.23);
@@ -15,6 +22,10 @@ export const Input = styled.input`
   padding: 0px 10px;
   font-size: 12px;
   transition: all 0.6s ease;
+
+  &[type='color'] {
+    padding: 0px;
+  }
 
   &:focus {
     border: 1px solid black;

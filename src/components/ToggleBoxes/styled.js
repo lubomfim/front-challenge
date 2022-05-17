@@ -4,7 +4,7 @@ export const ToggleBoxes = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin: 5px 0px 60px;
+  margin: 5px 0px 0px;
 `
 
 export const ToggleBoxesItem = styled.div`
@@ -14,6 +14,7 @@ export const ToggleBoxesItem = styled.div`
   font-size: 14px;
   transition: all 0.4s ease;
   cursor: pointer;
+  user-select: none;
 
   &.selected {
     background: #000;

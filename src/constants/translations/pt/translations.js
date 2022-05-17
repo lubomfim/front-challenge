@@ -9,7 +9,8 @@ export const LANG_PT = {
     emailLabel: 'E-mail',
     passwordLabel: 'Senha',
     buttonLogin: 'Entrar',
-    buttonRegister: 'Cadastre-se'
+    buttonRegister: 'Cadastre-se',
+    errorMessage: 'Verifique o campo'
   },
   register: {
     nameLabel: 'Nome',
@@ -30,7 +31,8 @@ export const LANG_PT = {
     nameLabel: 'Nome',
     codeLabel: 'Identificador',
     descriptionLabel: 'Descrição',
-    currencyAndValueLabel: 'Moeda e valor',
+    currencyLabel: 'Moeda',
+    valueLabel: 'Valor',
     brandLabel: 'Marca',
     materialLabel: 'Material',
     colorLabel: 'Cor',
@@ -48,7 +50,10 @@ export const LANG_PT = {
     buttonCreate: 'Criar Produto',
     buttonUpdate: 'Atualizar Produto',
     buttonRemove: 'Remover Produto',
+    buttonBack: 'Voltar',
     imageLabel: 'Adicionar imagem',
-    imageLimit: 'Você pode adicionar {{limit}} imagens'
+    imageLimit: 'Adicione até {{limit}} imagens',
+    noBrand: 'Selecione uma marca para adicionar images',
+    imageRemove: 'Remover imagem'
   }
 }

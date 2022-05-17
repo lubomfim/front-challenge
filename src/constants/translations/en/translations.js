@@ -9,7 +9,8 @@ export const LANG_EN = {
     emailLabel: 'E-mail',
     passwordLabel: 'Password',
     buttonLogin: 'Log in',
-    buttonRegister: 'Register'
+    buttonRegister: 'Register',
+    errorMessage: 'Check the field'
   },
   register: {
     nameLabel: 'Name',
@@ -30,7 +31,8 @@ export const LANG_EN = {
     nameLabel: 'Name',
     codeLabel: 'Identifier',
     descriptionLabel: 'Description',
-    currencyAndValueLabel: 'Currency and value',
+    currencyLabel: 'Currency',
+    valueLabel: 'Value',
     brandLabel: 'Brand',
     materialLabel: 'Material',
     colorLabel: 'Color',
@@ -39,7 +41,10 @@ export const LANG_EN = {
     buttonCreate: 'Create Product',
     buttonUpdate: 'Update Product',
     buttonRemove: 'Remove Product',
+    buttonBack: 'Back',
     imageLabel: 'Add image',
-    imageLimit: 'You can add {{limit}} images'
+    imageLimit: 'Add max {{limit}} images',
+    noBrand: 'Select a brand for add images',
+    imageRemove: 'Remove image'
   }
 }

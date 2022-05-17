@@ -9,7 +9,7 @@ const ToggleBoxes = ({ list, onClick, condition }) => {
           className={(el.selected || condition === el.code) && 'selected'}
           onClick={() => onClick(el)}
         >
-          {el.title}
+          {el.title || el}
         </S.ToggleBoxesItem>
       ))}
     </S.ToggleBoxes>
