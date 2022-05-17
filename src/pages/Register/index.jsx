@@ -2,14 +2,14 @@ import Layout from '../../components/Layout'
 import UserLoginAndRegister from '../../containers/UserLoginAndRegister'
 import * as S from './styled'
 
-const Register = () => {
+const Register = ({ t }) => {
   return (
-    <Layout headerInfo={{ title: 'Register', grid: 1, showUser: false }}>
+    <Layout headerInfo={{ title: t('titles.register'), grid: 1, showUser: false }}>
       <S.Register>
         <S.LogoContainer>
           <img src="assets/logo.jpg" alt="" />
         </S.LogoContainer>
-        <UserLoginAndRegister type="register" />
+        <UserLoginAndRegister t={t} type="register" />
       </S.Register>
     </Layout>
   )

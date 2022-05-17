@@ -24,7 +24,7 @@ const LanguagePicker = ({ t, i18n }) => {
 
   return (
     <>
-      <S.LanguageTitle>{t('language')}</S.LanguageTitle>
+      <S.LanguageTitle>{t('info.language')}</S.LanguageTitle>
       <ToggleBoxes condition={i18n.language} onClick={handlePickLanguage} list={languages} />
     </>
   )

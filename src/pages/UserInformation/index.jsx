@@ -8,8 +8,8 @@ import * as S from './styled'
 import LanguagePicker from '../../containers/LanguagePicker'
 import { useLocation } from 'react-router-dom'
 
-const UserInformation = () => {
-  const { i18n, t } = useTranslation()
+const UserInformation = ({ t }) => {
+  const { i18n } = useTranslation()
   const { user, setUser } = useUserContext()
   const { state } = useLocation()
 
@@ -23,11 +23,11 @@ const UserInformation = () => {
       headerInfo={{ grid: 1, showUser: false, showLogo: false, path: state?.prevPath || '/home' }}
     >
       <S.UserName>
-        {t('hello')}, {truncate(user?.name || user?.email, 10)}!
+        {t('info.hello')}, {truncate(user?.name || user?.email, 10)}!
       </S.UserName>
       <LanguagePicker i18n={i18n} t={t} />
       <Button variant="primary" onClick={handleLogout}>
-        {t('logout')}
+        {t('info.logout')}
       </Button>
     </Layout>
   )

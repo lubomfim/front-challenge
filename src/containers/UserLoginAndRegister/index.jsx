@@ -13,7 +13,7 @@ import {
 } from '../../utils/handleStorage'
 import { useUserContext } from '../../contexts/UserContext'
 
-const UserLoginAndRegister = ({ type }) => {
+const UserLoginAndRegister = ({ type, t }) => {
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
@@ -116,10 +116,18 @@ const UserLoginAndRegister = ({ type }) => {
     <S.UserLoginAndRegister>
       {!loginInfo.id && (
         <>
-          {type === 'register' && <Input label="Nome" name="name" onChange={handleChange} />}
-          <Input label="E-mail" name="email" onChange={handleChange} error={error.email} />
+          {type === 'register' && (
+            <Input label={t('register.nameLabel')} name="name" onChange={handleChange} />
+          )}
           <Input
-            label="Senha"
+            label={t('login.emailLabel')}
+            name="email"
+            onChange={handleChange}
+            error={error.email}
+            type="email"
+          />
+          <Input
+            label={t('login.passwordLabel')}
             type="password"
             name="password"
             onChange={handleChange}
@@ -129,19 +137,19 @@ const UserLoginAndRegister = ({ type }) => {
             (type === 'login' ? (
               <>
                 <Button variant="primary" onClick={handleLogin}>
-                  Entrar
+                  {t('login.buttonLogin')}
                 </Button>
                 <Button variant="secondary" path="/register">
-                  Cadastrar-se
+                  {t('login.buttonRegister')}
                 </Button>
               </>
             ) : (
               <>
                 <Button variant="primary" onClick={handleRegister}>
-                  Cadastrar
+                  {t('register.buttonRegister')}
                 </Button>
                 <Button variant="secondary" path="/">
-                  Voltar
+                  {t('register.buttonBack')}
                 </Button>
               </>
             ))}

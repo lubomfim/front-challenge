@@ -4,9 +4,7 @@ import ProductsList from '../../containers/ProductsList'
 
 import * as S from './styled'
 
-const Home = () => {
-  const { t } = useTranslation()
-
+const Home = ({ t }) => {
   return (
     <Layout headerInfo={{ grid: 2, showUser: true }}>
       <ProductsList t={t} />

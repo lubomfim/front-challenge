@@ -14,7 +14,7 @@ import ProductCreateAndUpgrade from '../pages/ProductCreateAndUpgrade'
 
 function Routes() {
   const { isLogin } = useUserContext()
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   if (!i18n.language) {
     handleChangeLanguage('pt')
@@ -27,7 +27,7 @@ function Routes() {
           path=""
           element={
             <PublicRoute user={isLogin()}>
-              <Login />
+              <Login t={t} />
             </PublicRoute>
           }
         />
@@ -35,7 +35,7 @@ function Routes() {
           path="register"
           element={
             <PublicRoute user={isLogin()}>
-              <Register />
+              <Register t={t} />
             </PublicRoute>
           }
         />
@@ -43,7 +43,7 @@ function Routes() {
           path="home"
           element={
             <ProtectedRoute user={isLogin()}>
-              <Home />
+              <Home t={t} />
             </ProtectedRoute>
           }
         />
@@ -51,7 +51,7 @@ function Routes() {
           path="info"
           element={
             <ProtectedRoute user={isLogin()}>
-              <UserInformation />
+              <UserInformation t={t} />
             </ProtectedRoute>
           }
         />
@@ -59,7 +59,7 @@ function Routes() {
           path="create-product"
           element={
             <ProtectedRoute user={isLogin()}>
-              <ProductCreateAndUpgrade type="create-product" />
+              <ProductCreateAndUpgrade t={t} type="create-product" />
             </ProtectedRoute>
           }
         />
@@ -67,12 +67,12 @@ function Routes() {
           path="upgrade-product/:id"
           element={
             <ProtectedRoute user={isLogin()}>
-              <ProductCreateAndUpgrade type="upgrade-product" />
+              <ProductCreateAndUpgrade t={t} type="upgrade-product" />
             </ProtectedRoute>
           }
         />
 
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Home t={t} />} />
       </Switch>
     </BrowserRouter>
   )

@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next'
 import Layout from '../../components/Layout'
 import * as S from './styled'
 
-const ProductCreateAndUpgrade = ({ type }) => {
-  const { i18n, t } = useTranslation()
+const ProductCreateAndUpgrade = ({ type, t }) => {
+  const { i18n } = useTranslation()
   return (
     <Layout
       headerInfo={{
