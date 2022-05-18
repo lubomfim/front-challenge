@@ -3,7 +3,7 @@ import * as S from './styled'
 
 const Modal = ({ handleConfirm, handleBack, children, textConfirm, textBack }) => {
   return (
-    <S.Modal>
+    <S.Modal data-testid="modal">
       <S.ModalContent>
         {children}
         {handleConfirm && (

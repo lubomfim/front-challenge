@@ -10,18 +10,19 @@ const Input = ({
   error = false,
   as = 'input',
   disabled,
-  options,
+  options = [],
   search = false,
   placeholder
 }) => {
   const { t } = useTranslation()
 
   return (
-    <S.InputContainer>
+    <S.InputContainer data-testid="input-container">
       {label && <S.Label>{label}</S.Label>}
-      {error && <S.Error>{t('login.errorMessage')}</S.Error>}
+      {error && <S.Error data-testid="error">{t('login.errorMessage')}</S.Error>}
       {as !== 'select' && (
         <S.Input
+          data-testid="input"
           search={search}
           placeholder={placeholder}
           disabled={disabled}
@@ -36,6 +37,7 @@ const Input = ({
 
       {as === 'select' && (
         <S.Input
+          data-testid="select"
           disabled={disabled}
           as={'select'}
           value={value}

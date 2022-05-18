@@ -8,8 +8,9 @@ const PaginationComponent = ({ number, handlePagination }) => {
   }
 
   return (
-    <S.PaginationContainer>
+    <S.PaginationContainer data-testid="pagination">
       <Pagination
+        data-testid="paginationChild"
         count={number}
         onChange={(event, value) => changePage(value)}
         shape="rounded"

@@ -6,7 +6,7 @@ const Layout = ({ children, headerInfo }) => {
   const { user } = useUserContext()
 
   return (
-    <S.Layout>
+    <S.Layout data-testid="layout">
       <Header {...headerInfo} user={user} />
       {children}
     </S.Layout>

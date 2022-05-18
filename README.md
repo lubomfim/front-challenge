@@ -24,7 +24,10 @@ npm install && npm start
 
 ```sh
 //After cloning and installing the dependencies, you can run the command:
-yarn test
+npm test
+
+// If you want, you can get the coverage folder, run this command:
+npm test -- --coverage
 ```
 ## 🚀 Technologies
 
