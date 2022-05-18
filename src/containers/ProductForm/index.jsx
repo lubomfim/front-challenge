@@ -94,7 +94,7 @@ const ProductForm = ({ t, i18n }) => {
   const handleCreateProduct = async () => {
     const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
 
-    if (isMobile.any() && sizeOfStorage > 200) {
+    if (isMobile.any() && sizeOfStorage > 150) {
       setAlertStorageLimit(true)
       return
     }
