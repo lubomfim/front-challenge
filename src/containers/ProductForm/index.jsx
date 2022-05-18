@@ -69,9 +69,10 @@ const ProductForm = ({ t, i18n, type }) => {
     } else if (type === 'upgrade-product' && !getProduct) {
       navigate('/home')
     } else {
-      const setCategory = categories.map((el) => {
+      const setCategory = getCategories.map((el) => {
         return {
-          title: el.title,
+          title: el,
+          code: el,
           selected: false
         }
       })
@@ -80,8 +81,6 @@ const ProductForm = ({ t, i18n, type }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, id, products])
-
-  useEffect(() => {}, [t])
 
   const handleChange = ({ name, value }) => {
     setProduct({
