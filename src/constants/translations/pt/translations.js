@@ -52,6 +52,7 @@ export const LANG_PT = {
     buttonUpdate: 'Atualizar Produto',
     buttonRemove: 'Remover Produto',
     buttonBack: 'Voltar',
+    confirmRemove: 'Confirma a remoção do produto? Essa ação não pode ser revertida.',
     imageLabel: 'Adicionar imagem',
     imageLimit: 'Adicione até {{limit}} imagens',
     noBrand: 'Selecione uma marca para adicionar images',

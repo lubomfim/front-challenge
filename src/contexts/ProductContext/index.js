@@ -8,17 +8,16 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState(null)
 
   const updateProducts = () => {
-    const getUser = loadFromLocalstorage('@Luxclusif/Products')
+    const getProducts = loadFromLocalstorage('@Luxclusif/Products')
 
-    getUser.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    setProducts(getUser)
+    getProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    setProducts(getProducts)
+
+    return getProducts
   }
 
   useEffect(() => {
-    const getUser = loadFromLocalstorage('@Luxclusif/Products')
-
-    getUser.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    setProducts(getUser)
+    setProducts(updateProducts())
   }, [])
 
   const store = {

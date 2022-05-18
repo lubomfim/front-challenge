@@ -9,12 +9,14 @@ import {
   getLocalStorageSize,
   loadFromLocalstorage,
   saveToLocalStorageSpread,
+  saveToLocalStorage,
   sizeOf
 } from '../../utils/handleStorage'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useProductContext } from '../../contexts/ProductContext'
 import Modal from '../../components/Modal'
 import { isMobile } from '../../utils/handleMobile'
+import { capitalize } from '@mui/material'
 
 const limits = {
   prada: 1,
@@ -23,9 +25,10 @@ const limits = {
   jacquemus: 3
 }
 
-const ProductForm = ({ t, i18n }) => {
+const ProductForm = ({ t, i18n, type }) => {
   const navigate = useNavigate()
-  const { updateProducts } = useProductContext()
+  const { id } = useParams()
+  const { updateProducts, products } = useProductContext()
   const [product, setProduct] = useState({
     name: '',
     code: '',
@@ -46,6 +49,39 @@ const ProductForm = ({ t, i18n }) => {
   const [imagesLimit, setImagesLimit] = useState(0)
   const [loading, setLoading] = useState(false)
   const [alertStorageLimit, setAlertStorageLimit] = useState(false)
+
+  useEffect(() => {
+    const getCategories = t('product.categoryItems', { returnObjects: true })
+    const getProduct = products?.filter((el) => el.id === Number(id))?.[0]
+
+    if (type === 'upgrade-product' && getProduct) {
+      const newCategoriesArr = getCategories.map((el) => {
+        return {
+          title: el,
+          code: el,
+          selected: el === capitalize(getProduct.category) ? true : false
+        }
+      })
+
+      setCategories(newCategoriesArr)
+      handleImagesLimit({ value: getProduct.brand })
+      setProduct(getProduct)
+    } else if (type === 'upgrade-product' && !getProduct) {
+      navigate('/home')
+    } else {
+      const setCategory = categories.map((el) => {
+        return {
+          title: el.title,
+          selected: false
+        }
+      })
+
+      setCategories(setCategory)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, id, products])
+
+  useEffect(() => {}, [t])
 
   const handleChange = ({ name, value }) => {
     setProduct({
@@ -78,21 +114,9 @@ const ProductForm = ({ t, i18n }) => {
     setCategories(newArr)
   }
 
-  useEffect(() => {
-    const getCategories = t('product.categoryItems', { returnObjects: true })
-
-    const newCategoriesArr = getCategories.map((el) => {
-      return {
-        title: el,
-        code: el,
-        selected: false
-      }
-    })
-    setCategories(newCategoriesArr)
-  }, [t])
-
-  const handleCreateProduct = async () => {
+  const handleCreateAndUpgradeProduct = async () => {
     const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
+    const checkType = type === 'upgrade-product'
 
     if (isMobile.any() && sizeOfStorage > 160) {
       setAlertStorageLimit(true)
@@ -108,21 +132,42 @@ const ProductForm = ({ t, i18n }) => {
     try {
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
+        const timeElapsed = Date.now()
+        const today = new Date(timeElapsed)
 
-        if (handleValidateForm()) {
-          const timeElapsed = Date.now()
-          const today = new Date(timeElapsed)
-
+        if (handleValidateForm() && !checkType) {
           saveToLocalStorageSpread('@Luxclusif/Products', {
             ...product,
             createdAt: today.toUTCString(),
+            updatedAt: today.toUTCString(),
             id: getProducts.length + 1
           })
           setProduct({
             ...product,
             createdAt: today.toUTCString(),
+            updatedAt: today.toUTCString(),
             id: getProducts.length + 1
           })
+          updateProducts()
+          navigate('/home')
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+        } else {
+          const productsCopy = [...products]
+          const getProductIndex = products.findIndex((el) => el.id === Number(id))
+          productsCopy[getProductIndex] = product
+
+          setProduct((el) => {
+            return {
+              ...el,
+              updatedAt: today.toUTCString()
+            }
+          })
+          console.log(productsCopy)
+          saveToLocalStorage('@Luxclusif/Products', productsCopy)
+
           updateProducts()
           navigate('/home')
           window.scrollTo({
@@ -154,6 +199,7 @@ const ProductForm = ({ t, i18n }) => {
 
     return false
   }
+
   return (
     <S.ProductForm>
       <S.ProductGrid cols="1fr 1fr">
@@ -250,8 +296,8 @@ const ProductForm = ({ t, i18n }) => {
         </S.CategoryTitle>
       )}
       {!loading && (
-        <Button variant="primary" onClick={handleCreateProduct}>
-          {t('product.buttonCreate')}
+        <Button variant="primary" onClick={handleCreateAndUpgradeProduct}>
+          {type === 'upgrade-product' ? t('product.buttonUpdate') : t('product.buttonCreate')}
         </Button>
       )}
       {loading && <Loader />}

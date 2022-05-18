@@ -12,11 +12,11 @@ const ProductCreateAndUpgrade = ({ type, t }) => {
         showUser: false,
         showLogo: false,
         path: `/home`,
-        title: t('titles.addProduct')
+        title: type === 'upgrade-product' ? t('titles.updateProduct') : t('titles.addProduct')
       }}
     >
       <S.ProductCreateAndUpgrade>
-        <ProductForm t={t} i18n={i18n} />
+        <ProductForm t={t} i18n={i18n} type={type} />
       </S.ProductCreateAndUpgrade>
     </Layout>
   )

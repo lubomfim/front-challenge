@@ -49,7 +49,7 @@ const ProductsList = ({ t, list, fullList }) => {
                 </div>
 
                 {el.value !== '' && <p className="value">{convertMoney(el.value, el.currency)}</p>}
-                <div className="more" onClick={() => navigation(`/upgrade-product/${el.id}`)}>
+                <div className="more" onClick={() => navigation(`/details-product/${el.id}`)}>
                   <MoreIcon />
                 </div>
               </S.ProductItemText>
