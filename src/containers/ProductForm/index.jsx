@@ -91,7 +91,7 @@ const ProductForm = ({ t, i18n }) => {
   }, [t])
 
   const handleCreateProduct = async () => {
-    const isMobile = navigator.userAgentData.mobile
+    const isMobile = navigator?.userAgentData?.mobile
     const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
 
     if (isMobile && sizeOfStorage > 4800) {

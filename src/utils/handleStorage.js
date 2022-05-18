@@ -40,14 +40,14 @@ export const getLocalStorageSize = () => {
     _x
 
   for (_x in localStorage) {
-    if (!localStorage.hasOwnProperty(_x)) {
+    if (!localStorage?.hasOwnProperty(_x)) {
       continue
     }
-    _xLen = (localStorage[_x].length + _x.length) * 2
+    _xLen = (localStorage[_x]?.length + _x?.length) * 2
     _lsTotal += _xLen
   }
 
-  return Number((_lsTotal / 1024).toFixed(2))
+  return Number((_lsTotal / 1024)?.toFixed(2))
 }
 
 export const typeSizes = {
