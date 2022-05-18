@@ -106,6 +106,8 @@ const ProductForm = ({ t, i18n }) => {
         return
       }
 
+      alert(sizeOfStorage)
+
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
 
