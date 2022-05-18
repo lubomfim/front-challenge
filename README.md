@@ -35,6 +35,8 @@ npm test -- --coverage
 - [React Router Dom](https://reactrouter.com/web/guides/quick-start)
 - [Styled-Components](https://styled-components.com/)
 - [Testing Library](https://testing-library.com/)
+- [Swiper](https://swiperjs.com/)
+- [Mui](https://mui.com/pt/)
 
 ## Folder Structure
 
