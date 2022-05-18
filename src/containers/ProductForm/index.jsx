@@ -101,12 +101,12 @@ const ProductForm = ({ t, i18n }) => {
     try {
       const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
 
-      if (isMobile.any() && sizeOfStorage > 4800) {
+      if (isMobile.any() && sizeOfStorage > 200) {
         setAlertStorageLimit(true)
         return
       }
 
-      alert(sizeOfStorage)
+      alert(JSON.stringify(localStorage.getItem('@Luxclusif/Products')))
 
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
