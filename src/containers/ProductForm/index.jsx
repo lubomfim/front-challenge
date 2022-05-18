@@ -106,7 +106,7 @@ const ProductForm = ({ t, i18n }) => {
         return
       }
 
-      alert(isMobile, sizeOfStorage)
+      alert(String(isMobile))
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
 
