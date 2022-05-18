@@ -92,6 +92,13 @@ const ProductForm = ({ t, i18n }) => {
   }, [t])
 
   const handleCreateProduct = async () => {
+    const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
+
+    if (isMobile.any() && sizeOfStorage > 200) {
+      setAlertStorageLimit(true)
+      return
+    }
+
     setLoading(true)
     setError({
       name: false,
@@ -99,15 +106,6 @@ const ProductForm = ({ t, i18n }) => {
     })
 
     try {
-      const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
-
-      if (isMobile.any() && sizeOfStorage > 200) {
-        setAlertStorageLimit(true)
-        return
-      }
-
-      alert(JSON.stringify(localStorage.getItem('@Luxclusif/Products')))
-
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
 
@@ -125,8 +123,9 @@ const ProductForm = ({ t, i18n }) => {
             createdAt: today.toUTCString(),
             id: getProducts.length + 1
           })
-          navigate('/home')
+          alert(JSON.stringify(localStorage.getItem('@Luxclusif/Products')))
           updateProducts()
+          navigate('/home')
           window.scrollTo({
             top: 0,
             behavior: 'smooth'
