@@ -5,15 +5,21 @@ import ToggleBoxes from '../../components/ToggleBoxes'
 import ProductImagesCreation from '../ProductImagesCreation'
 import Button from '../../components/Button'
 import Loader from '../../components/Loader'
-import { loadFromLocalstorage, saveToLocalStorageSpread } from '../../utils/handleStorage'
+import {
+  getLocalStorageSize,
+  loadFromLocalstorage,
+  saveToLocalStorageSpread,
+  sizeOf
+} from '../../utils/handleStorage'
 import { useNavigate } from 'react-router-dom'
 import { useProductContext } from '../../contexts/ProductContext'
+import Modal from '../../components/Modal'
 
 const limits = {
-  prada: 2,
-  chlóe: 5,
+  prada: 1,
+  chlóe: 2,
   dior: 3,
-  jacquemus: 4
+  jacquemus: 3
 }
 
 const ProductForm = ({ t, i18n }) => {
@@ -38,6 +44,7 @@ const ProductForm = ({ t, i18n }) => {
   const [categories, setCategories] = useState([])
   const [imagesLimit, setImagesLimit] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [alertStorageLimit, setAlertStorageLimit] = useState(false)
 
   const handleChange = ({ name, value }) => {
     setProduct({
@@ -84,11 +91,20 @@ const ProductForm = ({ t, i18n }) => {
   }, [t])
 
   const handleCreateProduct = async () => {
+    const isMobile = navigator.userAgentData.mobile
+    const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
+
+    if (isMobile && sizeOfStorage > 4800) {
+      setAlertStorageLimit(true)
+      return
+    }
+
     setLoading(true)
     setError({
       name: false,
       code: false
     })
+
     try {
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
@@ -239,6 +255,11 @@ const ProductForm = ({ t, i18n }) => {
         </Button>
       )}
       {loading && <Loader />}
+      {alertStorageLimit && (
+        <Modal handleBack={() => setAlertStorageLimit(false)} textBack="Voltar">
+          <p>{t('product.noStorageSize')}</p>
+        </Modal>
+      )}
     </S.ProductForm>
   )
 }

@@ -55,6 +55,8 @@ export const LANG_PT = {
     imageLabel: 'Adicionar imagem',
     imageLimit: 'Adicione até {{limit}} imagens',
     noBrand: 'Selecione uma marca para adicionar images',
-    imageRemove: 'Remover imagem'
+    imageRemove: 'Remover imagem',
+    noStorageSize:
+      ' Limite do storage ultrapassado, remova as imagens ou exclua algum produto anterior. Para uma experiência melhor, utilize o desktop.'
   }
 }
