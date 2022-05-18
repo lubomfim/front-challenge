@@ -1,5 +1,4 @@
 import * as S from './styled'
-import Button from '../../components/Button'
 import PaginationComponent from '../../components/Pagination'
 import { truncate } from '../../utils/handleString'
 import { convertMoney } from '../../utils/handleCurrency'
