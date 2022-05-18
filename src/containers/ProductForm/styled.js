@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const ProductForm = styled.div`
   margin-top: 30px;
-  padding-bottom: 50px;
 
   > div {
     max-width: 100%;

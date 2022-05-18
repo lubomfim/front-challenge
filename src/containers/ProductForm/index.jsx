@@ -5,12 +5,9 @@ import ToggleBoxes from '../../components/ToggleBoxes'
 import ProductImagesCreation from '../ProductImagesCreation'
 import Button from '../../components/Button'
 import Loader from '../../components/Loader'
-import {
-  loadFromLocalstorage,
-  saveToLocalStorage,
-  saveToLocalStorageSpread
-} from '../../utils/handleStorage'
+import { loadFromLocalstorage, saveToLocalStorageSpread } from '../../utils/handleStorage'
 import { useNavigate } from 'react-router-dom'
+import { useProductContext } from '../../contexts/ProductContext'
 
 const limits = {
   prada: 2,
@@ -21,6 +18,7 @@ const limits = {
 
 const ProductForm = ({ t, i18n }) => {
   const navigate = useNavigate()
+  const { updateProducts } = useProductContext()
   const [product, setProduct] = useState({
     name: '',
     code: '',
@@ -96,15 +94,25 @@ const ProductForm = ({ t, i18n }) => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
 
         if (handleValidateForm()) {
+          const timeElapsed = Date.now()
+          const today = new Date(timeElapsed)
+
           saveToLocalStorageSpread('@Luxclusif/Products', {
             ...product,
+            createdAt: today.toUTCString(),
             id: getProducts.length + 1
           })
           setProduct({
             ...product,
+            createdAt: today.toUTCString(),
             id: getProducts.length + 1
           })
           navigate('/home')
+          updateProducts()
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
         }
         setLoading(false)
       }, 1000)

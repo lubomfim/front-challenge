@@ -10,7 +10,9 @@ const Input = ({
   error = false,
   as = 'input',
   disabled,
-  options
+  options,
+  search = false,
+  placeholder
 }) => {
   const { t } = useTranslation()
 
@@ -20,6 +22,8 @@ const Input = ({
       {error && <S.Error>{t('login.errorMessage')}</S.Error>}
       {as !== 'select' && (
         <S.Input
+          search={search}
+          placeholder={placeholder}
           disabled={disabled}
           as={as}
           type={type}

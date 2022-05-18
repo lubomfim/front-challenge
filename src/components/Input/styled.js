@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import searchIcon from '../../assets/icons/search.svg'
 
 export const InputContainer = styled.div`
   margin: 0 auto;
@@ -34,6 +36,18 @@ export const Input = styled(({ as }) => as)`
   &.error {
     border-color: red;
   }
+
+  ${({ search }) => {
+    if (search) {
+      return css`
+        padding-left: 40px;
+        background: url(${searchIcon});
+        background-repeat: no-repeat;
+        background-position: 8px 10px;
+        background-size: 16px;
+      `
+    }
+  }}
 `
 
 export const Label = styled.label`

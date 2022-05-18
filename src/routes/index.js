@@ -11,6 +11,7 @@ import UserInformation from '../pages/UserInformation'
 import { handleChangeLanguage } from '../constants/translations/i18n'
 import { useTranslation } from 'react-i18next'
 import ProductCreateAndUpgrade from '../pages/ProductCreateAndUpgrade'
+import ScrollToTop from '../utils/scrollToTop'
 
 function Routes() {
   const { isLogin } = useUserContext()
@@ -63,11 +64,14 @@ function Routes() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="upgrade-product/:id"
           element={
             <ProtectedRoute user={isLogin()}>
-              <ProductCreateAndUpgrade t={t} type="upgrade-product" />
+              <ScrollToTop>
+                <ProductCreateAndUpgrade t={t} type="upgrade-product" />
+              </ScrollToTop>
             </ProtectedRoute>
           }
         />

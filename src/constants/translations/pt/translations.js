@@ -20,7 +20,8 @@ export const LANG_PT = {
   home: {
     emptyResult: 'Sem produtos adicionados',
     addButton: 'Adicionar produto',
-    inputSearch: 'Busque pelo nome ou código'
+    inputSearch: 'Busque pelo nome ou código',
+    emptyResultSearch: 'Sem resultados'
   },
   info: {
     logout: 'Encerrar sessão',
@@ -28,7 +29,7 @@ export const LANG_PT = {
     hello: 'Olá'
   },
   product: {
-    nameLabel: 'Nome',
+    nameLabel: 'Nome do produto',
     codeLabel: 'Identificador',
     descriptionLabel: 'Descrição',
     currencyLabel: 'Moeda',

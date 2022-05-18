@@ -9,7 +9,7 @@ const ProductCreateAndUpgrade = ({ type, t }) => {
     <Layout
       headerInfo={{
         grid: 3,
-        showUser: true,
+        showUser: false,
         showLogo: false,
         path: `/home`,
         title: t('titles.addProduct')
