@@ -48,6 +48,6 @@ export const LANG_EN = {
     noBrand: 'Select a brand for add images',
     imageRemove: 'Remove image',
     noStorageSize:
-      'Limite do storage ultrapassado, remova as imagens ou exclua algum produto anterior. Para uma experiência melhor, utilize o desktop.'
+      'Exceeded mobile storage limit, remove images or delete any previous product. For a better experience, use the desktop.'
   }
 }

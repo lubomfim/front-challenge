@@ -57,6 +57,6 @@ export const LANG_PT = {
     noBrand: 'Selecione uma marca para adicionar images',
     imageRemove: 'Remover imagem',
     noStorageSize:
-      ' Limite do storage ultrapassado, remova as imagens ou exclua algum produto anterior. Para uma experiência melhor, utilize o desktop.'
+      'Limite do storage mobile ultrapassado, remova as imagens ou exclua algum produto anterior. Para uma experiência melhor, utilize o desktop.'
   }
 }
