@@ -4,15 +4,18 @@ import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from './ProtectedRoute'
 import { useUserContext } from '../contexts/UserContext'
+
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Home from '../pages/Home'
 import UserInformation from '../pages/UserInformation'
+import ProductDetails from '../pages/ProductDetails'
+import ProductCreateAndUpgrade from '../pages/ProductCreateAndUpgrade'
+
 import { handleChangeLanguage } from '../constants/translations/i18n'
 import { useTranslation } from 'react-i18next'
-import ProductCreateAndUpgrade from '../pages/ProductCreateAndUpgrade'
+
 import ScrollToTop from '../utils/scrollToTop'
-import ProductDetails from '../pages/ProductDetails'
 
 function Routes() {
   const { isLogin } = useUserContext()
