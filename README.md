@@ -11,7 +11,7 @@ Build a simple Resale Product Information Management (PIM) Module. The purpose i
 
 ## Before you start
 
-i fully recommend you test this application on a desktop. The app uses localstorage to manage the data ans as mobile has a smaller amount of space, it has a direct impact on the experience of using it.
+i fully recommend you test this application on a desktop. The app uses localstorage to manage the data and as mobile has a smaller amount of space, it has a direct impact on the experience of using it.
 
 ## Run locally
 
