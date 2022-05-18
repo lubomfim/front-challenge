@@ -8,6 +8,18 @@ Project developed for front-end challenge at Luxclusif.
 
 Build a simple Resale Product Information Management (PIM) Module. The purpose is to have a tool where an authenticated user (credentials can be hardcoded) can create, view and edit Luxclusif product catalog.
 . You can check the design [here](https://xd.adobe.com/view/61dbec2c-0235-4a87-9fbb-87db24ebb0b2-3488/?fullscreen)
+
+## Before you start
+
+i fully recommend you test this application on a desktop. The app uses localstorage to manage the data ans as mobile has a smaller amount of space, it has a direct impact on the experience of using it.
+
+## Run locally
+
+```sh
+git clone https://github.com/lubomfim/front-challenge.git
+cd front-challenge
+npm install && npm start
+```
 ## 🌐 Live Version
 
 [Access live project](https://luxclusif.vercel.app/)
