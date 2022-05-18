@@ -14,6 +14,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useProductContext } from '../../contexts/ProductContext'
 import Modal from '../../components/Modal'
+import { isMobile } from '../../utils/handleMobile'
 
 const limits = {
   prada: 1,
@@ -98,15 +99,16 @@ const ProductForm = ({ t, i18n }) => {
     })
 
     try {
-      const isMobile = navigator?.userAgentData?.mobile
       const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
 
-      if (isMobile && sizeOfStorage > 4800) {
+      if (isMobile.any() && sizeOfStorage > 4800) {
         setAlertStorageLimit(true)
         return
       }
 
-      alert(String(isMobile))
+      alert(isMobile.any())
+      alert(sizeOfStorage > 4800)
+
       setTimeout(() => {
         const getProducts = loadFromLocalstorage('@Luxclusif/Products') || []
 
