@@ -51,6 +51,7 @@ export const LANG_PT = {
     buttonCreate: 'Criar Produto',
     buttonUpdate: 'Atualizar Produto',
     buttonRemove: 'Remover Produto',
+    buttonFilter: 'Aplicar Filtro',
     buttonBack: 'Voltar',
     confirmRemove: 'Confirma a remoção do produto? Essa ação não pode ser revertida.',
     imageLabel: 'Adicionar imagem',

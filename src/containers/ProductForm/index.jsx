@@ -118,7 +118,7 @@ const ProductForm = ({ t, i18n, type }) => {
     const sizeOfStorage = getLocalStorageSize() + sizeOf(product)
     const checkType = type === 'upgrade-product'
 
-    if (isMobile.any() && sizeOfStorage > 160) {
+    if (isMobile.any() && sizeOfStorage > 2000) {
       setAlertStorageLimit(true)
       return
     }

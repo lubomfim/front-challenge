@@ -9,9 +9,24 @@ export const SearchContainer = styled.div`
   > div {
     margin: 0;
     max-width: 100%;
+
+    &.filter {
+      position: relative;
+    }
   }
 
   svg {
     cursor: pointer;
   }
+
+  .close {
+    background: white;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+`
+
+export const FilterInputContainer = styled.div`
+  margin-bottom: 20px;
 `

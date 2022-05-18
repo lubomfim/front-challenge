@@ -42,6 +42,7 @@ export const LANG_EN = {
     buttonCreate: 'Create Product',
     buttonUpdate: 'Update Product',
     buttonRemove: 'Remove Product',
+    buttonFilter: 'Apply Filter',
     confirmRemove: 'Confirm the removal of the product? This action cannot be reversed.',
     buttonBack: 'Back',
     imageLabel: 'Add image',
