@@ -11,7 +11,11 @@ Build a simple Resale Product Information Management (PIM) Module. The purpose i
 
 ## Before you start
 
-i fully recommend you test this application on a desktop. The app uses localstorage to manage the data ans as mobile has a smaller amount of space, it has a direct impact on the experience of using it.
+- i fully recommend you test this application on a desktop. As the application uses local storage to manage the data, we end up having limitations on the size we can use in it - normally 5mb - and unless the user increases it, it ends up impacting the creation and updating of the product, mainly on mobile. Because of this, the application has a lock so that it doesn't create or update if this limit passes.
+
+- As the password is stored locally, it is not shared between your browsers, that is, your login can only be used in the browser in which it was registered;
+
+- I hope you enjoy this project as much as I learned developing it!
 
 ## Run locally
 
