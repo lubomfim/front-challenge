@@ -123,7 +123,6 @@ const ProductForm = ({ t, i18n }) => {
             createdAt: today.toUTCString(),
             id: getProducts.length + 1
           })
-          alert(JSON.stringify(localStorage.getItem('@Luxclusif/Products')))
           updateProducts()
           navigate('/home')
           window.scrollTo({
