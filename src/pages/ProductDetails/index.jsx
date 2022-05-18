@@ -39,7 +39,7 @@ const ProductDetails = ({ t }) => {
         <S.ProductDetails>
           {product?.images?.length > 0 && <ProductImageSlider list={product} />}
 
-          <div>
+          <S.ProductDetailsText>
             <S.ProductTextContainer className="title">
               <p className="name">{product.name}</p>
               <p className="code">{product.code}</p>
@@ -76,7 +76,7 @@ const ProductDetails = ({ t }) => {
             <Button variant="secondary" onClick={() => setOpenDeleteModal(true)}>
               {t('product.buttonRemove')}
             </Button>
-          </div>
+          </S.ProductDetailsText>
           {openDeleteModal && (
             <Modal
               handleBack={() => setOpenDeleteModal(false)}

@@ -56,3 +56,13 @@ export const ProductTextContainer = styled.div`
     border: 1px solid rgba(121, 121, 121, 0.3);
   }
 `
+
+export const ProductDetailsText = styled.div`
+  @media (min-width: 600px) {
+    max-width: 800px;
+    min-width: 400px;
+    height: 400px;
+    max-height: 400px;
+    margin-right: 20px;
+  }
+`
