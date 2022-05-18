@@ -1,0 +1,10 @@
+{
+  "permissions": [
+  "unlimitedStorage",
+  "storage"
+],
+"optional_permissions": [
+  "unlimitedStorage"
+]
+
+}
