@@ -17,7 +17,6 @@ const Home = ({ t }) => {
   useEffect(() => {
     setList(products)
     setFilteredList(products)
-    alert(JSON.stringify(localStorage.getItem('@Luxclusif/Products')))
   }, [products])
 
   return (
