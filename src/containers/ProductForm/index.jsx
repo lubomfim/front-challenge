@@ -154,7 +154,7 @@ const ProductForm = ({ t, i18n, type }) => {
             top: 0,
             behavior: 'smooth'
           })
-        } else {
+        } else if (handleValidateForm() && checkType) {
           const productsCopy = [...products]
           const getProductIndex = products.findIndex((el) => el.id === Number(id))
           productsCopy[getProductIndex] = product
@@ -165,7 +165,7 @@ const ProductForm = ({ t, i18n, type }) => {
               updatedAt: today.toUTCString()
             }
           })
-          console.log(productsCopy)
+
           saveToLocalStorage('@Luxclusif/Products', productsCopy)
 
           updateProducts()

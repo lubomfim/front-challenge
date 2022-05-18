@@ -9,10 +9,11 @@ import * as S from './styled'
 import { capitalize } from '@mui/material'
 import { convertMoney } from '../../utils/handleCurrency'
 import Modal from '../../components/Modal'
+import { saveToLocalStorage } from '../../utils/handleStorage'
 
 const ProductDetails = ({ t }) => {
   const navigate = useNavigate()
-  const { products } = useProductContext()
+  const { products, updateProducts } = useProductContext()
   const [product, setProduct] = useState()
   const [openDeleteModal, setOpenDeleteModal] = useState()
   const { id } = useParams()
@@ -23,6 +24,12 @@ const ProductDetails = ({ t }) => {
   }, [id, products])
 
   const handleDeleteProduct = () => {
+    const productsCopy = [...products]
+    const getProductIndex = products.findIndex((el) => el.id === Number(id))
+    productsCopy.splice(getProductIndex, 1)
+
+    saveToLocalStorage('@Luxclusif/Products', productsCopy)
+    updateProducts()
     navigate('/home')
   }
 
